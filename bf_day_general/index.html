@@ -1482,6 +1482,29 @@
                 -webkit-overflow-scrolling: touch;
                 touch-action: pan-y;
             }
+            #facts {
+                height: 100vh;
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
+
+                justify-content: flex-start;
+            }
+
+            #facts .section-inner {
+                margin: 0 auto;
+                padding-bottom: 180px;
+
+                min-height: max-content;
+                justify-content: flex-start;
+            }
+
+            #facts .section-next {
+                margin-top: 30px;
+                margin-bottom: 100px;
+            }
         }
     </style>
 </head>
