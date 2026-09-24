@@ -1505,6 +1505,21 @@
                 margin-top: 30px;
                 margin-bottom: 100px;
             }
+            #game {
+                overflow-y: auto;
+                overflow-x: hidden;
+                justify-content: flex-start;
+
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
+            }
+
+            #game .section-inner {
+                min-height: calc(100vh + 180px);
+                padding-bottom: 100px;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
