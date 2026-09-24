@@ -407,9 +407,17 @@
             height: 100vh;
             z-index: 1;
             padding: 90px 24px 30px;
+
             overflow-y: auto;
+            overflow-x: hidden;
+
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+            overscroll-behavior-y: contain;
+
             scrollbar-width: none;
             -ms-overflow-style: none;
+
             align-items: center;
             justify-content: center;
             flex-direction: column;
@@ -433,7 +441,7 @@
         .section-inner {
             width: 100%;
             max-width: 1080px;
-            margin: auto;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1461,6 +1469,18 @@
             }
             .polaroid-frame {
                 padding: 14px;
+            }
+            .page-section {
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 110px;
+                padding-bottom: 40px;
+
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                -webkit-overflow-scrolling: touch;
+                touch-action: pan-y;
             }
         }
     </style>
