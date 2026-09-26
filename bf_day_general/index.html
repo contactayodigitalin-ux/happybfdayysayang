@@ -1931,8 +1931,10 @@
                     <button class="btn-primary" id="retryQuizBtn">PLAY AGAIN ↺</button>
                 </div>
             </div>
-            <div class="section-next">
-                <button class="btn-primary" onclick="showSection('ending')">SEE THE FINAL NOTE →</button>
+            <div class="section-next" id="quizNextButton" style="display: none;">
+                <button class="btn-primary" onclick="showSection('ending')">
+                    SEE THE FINAL NOTE →
+                </button>
             </div>
         </div>
     </section>
@@ -2380,22 +2382,38 @@
         function showResults() {
             document.getElementById('quizQuestionView').style.display = 'none';
             document.getElementById('quizResultView').style.display = 'block';
-            document.getElementById('quizScoreText').textContent = `${quizScore} / ${quizQuestions.length} Correct!`;
 
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 80,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
+            document.getElementById('quizScoreText').textContent =
+                `${quizScore} / ${quizQuestions.length} Correct!`;
+
+            const quizNextButton = document.getElementById('quizNextButton');
+
+            // Hanya boleh lanjut kalau 3/3
+            if (quizScore === quizQuestions.length) {
+                quizNextButton.style.display = 'block';
+
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 80,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } else {
+                quizNextButton.style.display = 'none';
             }
         }
 
         function resetQuiz() {
             currentQ = 0;
             quizScore = 0;
+
             document.getElementById('quizResultView').style.display = 'none';
             document.getElementById('quizQuestionView').style.display = 'block';
+
+            // Sembunyikan tombol Final Note sampai berhasil 3/3 lagi
+            document.getElementById('quizNextButton').style.display = 'none';
+
             loadQuestion();
         }
 
